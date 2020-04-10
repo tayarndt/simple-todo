@@ -1,0 +1,11 @@
+this is a sample item
+This is another sample item
+use the program to read them
+Each item is on a new line
+do math quiz 24
+organize files
+find some math resources
+finish quizes
+do some coursepack
+possibly look at ethics
+2

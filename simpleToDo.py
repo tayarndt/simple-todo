@@ -7,19 +7,20 @@ def main():
 	welcome()
 
 
-#  function to check if file exists
+#  function to check if file exists and if not creats an empty file for the user
 def welcome():
+#checks to see if we have the items.txt file. If we do, then the menu function is ran.
 	if  (path.exists("items.txt")):
-		file =  open("items.txt","a")
 		menu()
 	else:
 		message = input("Is it okay to create a new file for your items. This app must have a text file to function. Type Y for Yes, or N for no.")
 		if message.upper() == "Y":
 			file =  open("items.txt","a")
 			print("file created successfully. You may now use the program.")
+			print("You are going to be taken to the main menu so you can use the program.")
+			menu()
 		elif message == "N":
 			print("Please note that you must have a file for this ap.")
-			file.close()
 			return file
 
 # function to ask users what options they want
@@ -38,10 +39,15 @@ def menu():
 # function to read a file to the user of all there tasks
 def readFile ():
 	fileToRead = open("items.txt","r")
-	line = fileToRead.readlines()
-	print(line)
-	return fileToRead
-	fileToRead.close()
+#need to assign the file in question to another variable because the module won't allow file objects. This module checks the size of the file and tells the user if they have an empty file.
+	emptyFile = "items.txt"
+	if os.path.getsize(emptyFile) == 0:
+		print("You have an empty file of tasks. Try adding some tasks first by typing E to go to the menu and then typing A to add.")
+	else:
+		line = fileToRead.read()
+		line = line.rstrip("\n")
+		print(line)
+		return fileToRead
 
 # function to append to the file and add items
 def writeFile():
@@ -50,8 +56,8 @@ def writeFile():
 		task = input("task name:")
 
 		if task.upper() != "E":
-			taskData = task,"\n"
-			fileToWrite.write(str(taskData))
+			fileToWrite.write(task)
+			fileToWrite.write("\n")
 		else:
 			break
 			return fileToWrite

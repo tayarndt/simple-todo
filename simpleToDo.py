@@ -13,11 +13,14 @@ def welcome():
 		file =  open("items.txt","a")
 		menu()
 	else:
-		file =  open("items.txt","a")
-		print("it appears you don't have a text file for your items to be stored in. We will create it now. ")
-		print("file created successfully. You may now use the program.")
-		file.close()
-		return file
+		message = input("Is it okay to create a new file for your items. This app must have a text file to function. Type Y for Yes, or N for no.")
+		if message.upper() == "Y":
+			file =  open("items.txt","a")
+			print("file created successfully. You may now use the program.")
+		elif message == "N":
+			print("Please note that you must have a file for this ap.")
+			file.close()
+			return file
 
 # function to ask users what options they want
 def menu():
@@ -35,11 +38,10 @@ def menu():
 # function to read a file to the user of all there tasks
 def readFile ():
 	fileToRead = open("items.txt","r")
-	for line in fileToRead:
-		line = fileToRead.readlines()
-		print(line)
-		return fileToRead
-		fileToRead.close()
+	line = fileToRead.readlines()
+	print(line)
+	return fileToRead
+	fileToRead.close()
 
 # function to append to the file and add items
 def writeFile():
@@ -47,9 +49,9 @@ def writeFile():
 	while True:
 		task = input("task name:")
 
-		if task != "1":
-			fileToWrite.write(task)
-			fileToWrite.write("\n")
+		if task.upper() != "E":
+			taskData = task,"\n"
+			fileToWrite.write(str(taskData))
 		else:
 			break
 			return fileToWrite

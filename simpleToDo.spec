@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['simpleToDo.py'],
-             pathex=["C:\\Users\\'\\Documents\\simple-todo"],
+             pathex=['G:\\My Drive\\personal\\projects\\simple-todo'],
              binaries=[],
              datas=[],
              hiddenimports=[],

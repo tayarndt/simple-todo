@@ -1,10 +1,13 @@
+# imports
 import os.path
 from os import path
 
+# main function
 def main():
 	welcome()
 
 
+#  function to check if file exists
 def welcome():
 	if  (path.exists("items.txt")):
 		file =  open("items.txt","a")
@@ -16,7 +19,7 @@ def welcome():
 		file.close()
 		return file
 
-
+# function to ask users what options they want
 def menu():
 	while True:
 		message = input("what would you like to do? Type A to add a task, E to exit,H to get some help, R to read your list")
@@ -29,7 +32,7 @@ def menu():
 		elif message.upper() == "A":
 			writeFile()
 
-
+# function to read a file to the user of all there tasks
 def readFile ():
 	fileToRead = open("items.txt","r")
 	for line in fileToRead:
@@ -38,7 +41,7 @@ def readFile ():
 		return fileToRead
 		fileToRead.close()
 
-
+# function to append to the file and add items
 def writeFile():
 	fileToWrite = open("items.txt","a")
 	while True:
